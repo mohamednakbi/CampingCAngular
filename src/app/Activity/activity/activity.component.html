@@ -1,0 +1,561 @@
+<h2>Activity Listing</h2>
+
+<div class="mat-elevation-z8">
+
+    <div>
+        <a mat-raised-button color="primary" (click)="Openpopup('')" style="margin: 2%">Create New</a>
+    </div>
+   <table  mat-table [dataSource]="activitydata" matSort class="mat-elevation-z8">
+
+<ng-container matColumnDef="id">
+    
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> ID</th>
+    <tr *ngFor="let x of activitydata  ">
+    <td mat-cell *matCellDef="let element">{{x.id}}</td>
+</tr>
+  </ng-container>
+
+  <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Name</th>
+      <tr *ngFor="let x of activitydata  ">
+      <td mat-cell *matCellDef="let element">{{x.name}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef>  description</th>  
+        <tr *ngFor="let x of activitydata  ">
+      <td mat-cell *matCellDef="let element">{{x.description  }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="capacity">
+      <th mat-header-cell *matHeaderCellDef> capacity</th>
+      <tr *ngFor="let x of activitydata  ">
+      <td mat-cell *matCellDef="let element">{{x.capacity |number}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="favourite">
+      <th mat-header-cell *matHeaderCellDef> favourite</th>
+      <tr *ngFor="let x of activitydata  ">
+      <td mat-cell *matCellDef="let element">{{x.favourite}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="disponibility">
+      <th mat-header-cell *matHeaderCellDef> disponibility</th>
+      <tr *ngFor="let x of activitydata  ">
+      <td mat-cell *matCellDef="let element">{{x.disponibility}}</td>
+    </ng-container>
+    <ng-container matColumnDef="startTime">
+        <th mat-header-cell *matHeaderCellDef> startTime</th>
+        <tr *ngFor="let x of activitydata  ">
+        <td mat-cell *matCellDef="let element">{{x.startTime}}</td>
+      </ng-container>
+      <ng-container matColumnDef="endTime">
+        <th mat-header-cell *matHeaderCellDef> endTime</th>
+        <tr *ngFor="let x of activitydata  ">
+        <td mat-cell *matCellDef="let element">{{x.endTime}}</td>
+      </ng-container>
+
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef> Action</th>
+      <td mat-cell *matCellDef="let element">
+          <div>
+              <a mat-raised-button   color="primary">Edit</a> |
+              <a mat-raised-button  color="accent">Delete</a>
+          </div>
+      </td>
+    </ng-container>
+
+    
+    <tr mat-header-row *matHeaderRowDef="displayColmuns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayColmuns;"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+  showFirstLastButtons 
+  aria-label="Select page of periodic elements">
+</mat-paginator>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--  
+
+<div class="card card-body blur shadow-blur mx-3 mx-md-4 mt-n6 overflow-hidden">
+    <div class="container">
+        <div class="row border-radius-md pb-4 p-3 mx-sm-0 mx-1 position-relative">
+            <div class="col-lg-3 mt-lg-n2 mt-2">
+                <label class="ms-0"></label>
+
+            </div>
+            <div class="col-lg-3 mt-lg-n2 mt-2">
+                <label class="ms-0"></label>
+
+            </div>
+
+
+
+
+            <section class="py-7">
+                <div class="container">
+                    <div class="row justify-space-between py-2">
+                        <div class="col-lg-4 mx-auto">
+                            <div class="input-group input-group-dynamic mb-4">
+                                <span class="input-group-text"><i class="fas fa-search" aria-hidden="true"></i></span>
+                                <input class="form-control"   placeholder="Search" type="text" >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+    </div> -->
+
+<!--        <section class="pt-7 pb-0">-->
+<!--            <div class="container">-->
+<!--                <div class="row">-->
+<!--                    <div class="col-lg-4 col-md-6">-->
+<!--                        <div class="card mt-5 mt-md-0">-->
+<!--                            <div class="card-header p-0 mx-3 mt-n4 position-relative z-index-2">-->
+
+<!-- 
+    <section class="pt-7 pb-0">
+
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="card mt-5 mt-md-0">
+
+                        <div class="card-body pt-3">
+                            <div class="card-header p-0 mx-3 mt-n4 position-relative z-index-2">
+                                <a class="d-block blur-shadow-image">
+                                    <h6>imageUpload</h6>
+                                </a>
+                            </div>
+                            <p class="text-dark mb-2 text-sm">start at :  </p>
+                            <p class="text-dark mb-2 text-sm">end at :  </p>
+                            <p class="text-dark mb-2 text-sm">createur event :  </p>
+
+                            <a href="javascript:;">
+                                <h5>
+                                 </h5>
+                            </a>
+                            <p>
+                             </p>
+                            <button style="margin-right: 10px" type="button" class="btn btn-outline-primary btn-sm mb-0" >more Detail</button>
+                            <button style="margin-right: 10px" type="button" class="btn btn-outline-primary btn-sm mb-0"  >delete</button>
+                            <button style="margin-right: 10px" type="button" class="btn btn-outline-primary btn-sm mb-0"   data-bs-toggle="modal" data-bs-target="#exampleModalMessage">
+                                edit            </button> -->
+<!--                            <button style="margin-right: 10px" type="button" class="btn btn-outline-primary btn-sm mb-0"  (click)="onSaveFile()" data-bs-toggle="modal" data-bs-target="#exampleModalMessage11">-->
+<!--                                AAA            </button>-->
+<!-- 
+                        </div>
+                    </div>
+                </div>
+
+
+ 
+                <div class="col-sm-7 ms-auto text-end" style="margin-right: 550px">
+                    <ul class="pagination pagination-primary mt-7">
+                        <li class="page-item ms-auto">
+ 
+                        </li> -->
+<!-- 
+                        <pagination-controls  ></pagination-controls> -->
+<!-- 
+                        <li class="page-item">
+
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div> -->
+
+    <!-- </section> -->
+
+    <!-- <section class="py-3 mt-5 bg-gradient-dark position-relative overflow-hidden mx-n5">
+
+        <div class="container pt-6 pb-5 position-relative z-index-3">
+            <div class="row">
+                <div class="col-md-6 mx-auto text-center">
+                    <span class="badge badge-white text-dark mb-2">Testimonials</span>
+                    <h2 class="text-white mb-3">Best donor of event 2022</h2>
+                    <h5 class="text-white font-weight-light">
+                        If you’re selected for them you’ll also get three tickets, opportunity to access Investor Office Hours and Mentor Hours and much more all for free.
+                    </h5>
+                </div>
+
+            </div>
+            <ng-container  >
+
+            <div class="row mt-8">
+                <div class="col-md-4 mb-md-0 mb-7">
+
+                    <div class="card">
+                        <div class="text-center mt-n5 z-index-1">
+                            <div class="position-relative">
+                                <div class="blur-shadow-avatar rounded-circle">
+                                    <img class="avatar avatar-xxl shadow-lg" src="../assets/img/team-2.jpg" alt="avatar">
+                                </div>
+                                <div class="colored-shadow rounded start-0 end-0 mx-auto avatar-xxl" style="background-image: url(&quot;../assets/img/team-2.jpg&quot;);"></div><div class="colored-shadow start-0 end-0 mx-auto avatar-xxl"></div></div>
+                        </div>
+
+                        <div class="card-body text-center pb-0">
+                            <h4 class="mb-0"></h4>
+
+                            <p class="mt-2">
+                                The connections you make at Web Summit are unparalleled, we met users all over the world.
+                            </p>
+                        </div>
+                        <div class="card-footer text-center pt-2">
+                            <div class="mx-auto">
+                                <svg class="opacity-2" width="60px" height="60px" viewBox="0 0 270 270" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                    <title>quote-down</title>
+                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <path d="M107.000381,49.033238 C111.792099,48.01429 115.761022,48.6892564 116.625294,50.9407629 C117.72393,53.8028077 113.174473,58.3219079 107.017635,60.982801 C107.011653,60.9853863 107.00567,60.9879683 106.999688,60.990547 C106.939902,61.0219589 106.879913,61.0439426 106.820031,61.0659514 C106.355389,61.2618887 105.888177,61.4371549 105.421944,61.5929594 C88.3985192,68.1467602 80.3242628,76.9161885 70.3525495,90.6906738 C60.0774843,104.884196 54.9399518,119.643717 54.9399518,134.969238 C54.9399518,138.278158 55.4624127,140.716309 56.5073346,142.283691 C57.2039492,143.328613 57.9876406,143.851074 58.8584088,143.851074 C59.7291771,143.851074 61.0353294,143.241536 62.7768659,142.022461 C68.3497825,138.016927 75.4030052,136.01416 83.9365338,136.01416 C93.8632916,136.01416 102.658051,140.063232 110.320811,148.161377 C117.983572,156.259521 121.814952,165.88151 121.814952,177.027344 C121.814952,188.695638 117.417572,198.970703 108.622813,207.852539 C99.828054,216.734375 89.1611432,221.175293 76.6220807,221.175293 C61.9931745,221.175293 49.3670351,215.166992 38.7436627,203.150391 C28.1202903,191.133789 22.8086041,175.024577 22.8086041,154.822754 C22.8086041,131.312012 30.0359804,110.239421 44.490733,91.6049805 C58.2196377,73.906272 74.3541002,59.8074126 102.443135,50.4450748 C102.615406,50.3748509 102.790055,50.3058192 102.966282,50.2381719 C104.199241,49.7648833 105.420135,49.3936487 106.596148,49.1227802 L107,49 Z M233.000381,49.033238 C237.792099,48.01429 241.761022,48.6892564 242.625294,50.9407629 C243.72393,53.8028077 239.174473,58.3219079 233.017635,60.982801 C233.011653,60.9853863 233.00567,60.9879683 232.999688,60.990547 C232.939902,61.0219589 232.879913,61.0439426 232.820031,61.0659514 C232.355389,61.2618887 231.888177,61.4371549 231.421944,61.5929594 C214.398519,68.1467602 206.324263,76.9161885 196.352549,90.6906738 C186.077484,104.884196 180.939952,119.643717 180.939952,134.969238 C180.939952,138.278158 181.462413,140.716309 182.507335,142.283691 C183.203949,143.328613 183.987641,143.851074 184.858409,143.851074 C185.729177,143.851074 187.035329,143.241536 188.776866,142.022461 C194.349783,138.016927 201.403005,136.01416 209.936534,136.01416 C219.863292,136.01416 228.658051,140.063232 236.320811,148.161377 C243.983572,156.259521 247.814952,165.88151 247.814952,177.027344 C247.814952,188.695638 243.417572,198.970703 234.622813,207.852539 C225.828054,216.734375 215.161143,221.175293 202.622081,221.175293 C187.993174,221.175293 175.367035,215.166992 164.743663,203.150391 C154.12029,191.133789 148.808604,175.024577 148.808604,154.822754 C148.808604,131.312012 156.03598,110.239421 170.490733,91.6049805 C184.219638,73.906272 200.3541,59.8074126 228.443135,50.4450748 C228.615406,50.3748509 228.790055,50.3058192 228.966282,50.2381719 C230.199241,49.7648833 231.420135,49.3936487 232.596148,49.1227802 L233,49 Z" fill="#48484A" fill-rule="nonzero" transform="translate(135.311778, 134.872794) scale(-1, -1) translate(-135.311778, -134.872794) "></path>
+                                    </g>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </ng-container>
+        </div>
+
+    </section> -->
+<!-- 
+    <section class="py-5 mt-5">
+        <div class="container">
+            <div class="row my-5">
+                <div class="col-md-6 mx-auto text-center">
+                    <h2>the rule events creating and donation</h2>
+                    <p>A lot of people don’t appreciate the moment until it’s passed. I'm not trying my hardest, and I'm not trying to do </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-10 mx-auto">
+                    <div class="accordion" id="accordionRental">
+                        <div class="accordion-item mb-3">
+                            <h5 class="accordion-header" id="headingOne">
+                                <button class="accordion-button border-bottom font-weight-bold text-start" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    How can I create Event
+                                    <i class="collapse-close fa fa-plus text-xs pt-1 position-absolute end-0"></i>
+                                    <i class="collapse-open fa fa-minus text-xs pt-1 position-absolute end-0"></i>
+                                </button>
+                            </h5>
+                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionRental">
+                                <div class="accordion-body text-sm opacity-8">
+                                    We’re not always in the position that we want to be at. We’re constantly growing. We’re constantly making mistakes. We’re constantly trying to express ourselves and actualize our dreams. If you have the opportunity to play this game
+                                    of life you need to appreciate every moment. A lot of people don’t appreciate the moment until it’s passed.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item mb-3">
+                            <h5 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button border-bottom font-weight-bold text-start" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    How can i make the donation?
+                                    <i class="collapse-close fa fa-plus text-xs pt-1 position-absolute end-0"></i>
+                                    <i class="collapse-open fa fa-minus text-xs pt-1 position-absolute end-0"></i>
+                                </button>
+                            </h5>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionRental">
+                                <div class="accordion-body text-sm opacity-8">
+                                    It really matters and then like it really doesn’t matter. What matters is the people who are sparked by it. And the people who are like offended by it, it doesn’t matter. Because it's about motivating the doers. Because I’m here to follow my dreams and inspire other people to follow their dreams, too.
+                                    <br>
+                                    We’re not always in the position that we want to be at. We’re constantly growing. We’re constantly making mistakes. We’re constantly trying to express ourselves and actualize our dreams. If you have the opportunity to play this game of life you need to appreciate every moment. A lot of people don’t appreciate the moment until it’s passed.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item mb-3">
+                            <h5 class="accordion-header" id="headingThree">
+                                <button class="accordion-button border-bottom font-weight-bold text-start" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    How much time does it take to receive the order?
+                                    <i class="collapse-close fa fa-plus text-xs pt-1 position-absolute end-0"></i>
+                                    <i class="collapse-open fa fa-minus text-xs pt-1 position-absolute end-0"></i>
+                                </button>
+                            </h5>
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionRental">
+                                <div class="accordion-body text-sm opacity-8">
+                                    The time is now for it to be okay to be great. People in this world shun people for being great. For being a bright color. For standing out. But the time is now to be okay to be the greatest you. Would you believe in what you believe in, if you were the only one who believed it?
+                                    If everything I did failed - which it doesn't, it actually succeeds - just the fact that I'm willing to fail is an inspiration. People are so scared to lose that they don't even try. Like, one thing people can't say is that I'm not trying, and I'm not trying my hardest, and I'm not trying to do the best way I know how.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item mb-3">
+                            <h5 class="accordion-header" id="headingFour">
+                                <button class="accordion-button border-bottom font-weight-bold text-start" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                    Can I participate in Event?
+                                    <i class="collapse-close fa fa-plus text-xs pt-1 position-absolute end-0"></i>
+                                    <i class="collapse-open fa fa-minus text-xs pt-1 position-absolute end-0"></i>
+                                </button>
+                            </h5>
+                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionRental">
+                                <div class="accordion-body text-sm opacity-8">
+                                    I always felt like I could do anything. That’s the main thing people are controlled by! Thoughts- their perception of themselves! They're slowed down by their perception of themselves. If you're taught you can’t do anything, you won’t do anything. I was taught I could do everything.
+                                    <br><br>
+                                    If everything I did failed - which it doesn't, it actually succeeds - just the fact that I'm willing to fail is an inspiration. People are so scared to lose that they don't even try. Like, one thing people can't say is that I'm not trying, and I'm not trying my hardest, and I'm not trying to do the best way I know how.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item mb-3">
+                            <h5 class="accordion-header" id="headingFifth">
+                                <button class="accordion-button border-bottom font-weight-bold text-start" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFifth" aria-expanded="false" aria-controls="collapseFifth">
+                                    more information
+                                    <i class="collapse-close fa fa-plus text-xs pt-1 position-absolute end-0"></i>
+                                    <i class="collapse-open fa fa-minus text-xs pt-1 position-absolute end-0"></i>
+                                </button>
+                            </h5>
+                            <div id="collapseFifth" class="accordion-collapse collapse" aria-labelledby="headingFifth" data-bs-parent="#accordionRental">
+                                <div class="accordion-body text-sm opacity-8">
+                                    There’s nothing I really wanted to do in life that I wasn’t able to get good at. That’s my skill. I’m not really specifically talented at anything except for the ability to learn. That’s what I do. That’s what I’m here for. Don’t be afraid to be wrong because you can’t learn anything from a compliment.
+                                    I always felt like I could do anything. That’s the main thing people are controlled by! Thoughts- their perception of themselves! They're slowed down by their perception of themselves. If you're taught you can’t do anything, you won’t do anything. I was taught I could do everything.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="min-vh-90">
+        <div   style="height: 500px">
+            
+        </div>
+        <div class="container">
+            <div class="row mt-8">
+                <div class="col-lg-7 d-flex justify-content-center flex-column">
+                    <div class="card card-body d-flex justify-content-center shadow-lg p-sm-5 blur align-items-center">
+                        <h3 class="text-center">create Event</h3>
+                        <button type="button" class="btn btn-link" routerLink="/addEvent">Link</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>
+
+
+
+
+
+<div class="col-md-4"> -->
+    <!-- Modal -->
+    <!-- <div class="modal fade" id="exampleModalMessage" tabindex="-1" role="dialog" aria-labelledby="exampleModalMessageTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">edit your event</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="input-group input-group-outline my-3">
+                            <label class="form-label">Event Name</label>
+                            <input type="text" name="eventName" class="form-control"  >
+                        </div>
+
+                        <div class="input-group input-group-outline mb-3">
+                            <label class="form-label">short description</label>
+                            <input type="text" class="form-control"  name="description"  required>
+                        </div>
+
+                        <div class="input-group input-group-outline mb-3">
+                            <label class="form-label">Start date</label>
+                            <input type="date" class="form-control" id="startAt" name="startAt"   >
+                        </div>
+                        <div class="input-group input-group-outline mb-3">
+                            <label class="form-label">end at</label>
+                            <input type="date" class="form-control"  name="endAt"   >
+                        </div> -->
+<!--                        <div>-->
+<!--                            <p-fileUpload type="file" class="btn btn-outline-success" style="height: 100px">Add pictures</p-fileUpload>-->
+
+<!--                        </div>-->
+                    <!-- </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+
+                    <button type="button" name="updateEvent"  class="btn bg-gradient-primary" >edit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+
+
+
+
+
+
+
+
+
+
+<!--<div class="col-md-4">-->
+<!--    &lt;!&ndash; Modal &ndash;&gt;-->
+<!--    <div class="modal fade" id="exampleModalMessage11" tabindex="-1" role="dialog" aria-labelledby="exampleModalMessageTitle" aria-hidden="true">-->
+<!--        <div class="modal-dialog modal-dialog-centered" role="document">-->
+<!--            <div class="modal-content">-->
+<!--                <div class="modal-header">-->
+<!--                    <h5 class="modal-title" id="exampleModalLabel11">edit your event</h5>-->
+<!--                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">-->
+<!--                        <span aria-hidden="true">×</span>-->
+<!--                    </button>-->
+<!--                </div>-->
+<!--                <div class="modal-body">-->
+<!--                    <form>-->
+<!--                        <div class="custom-file">-->
+<!--                            <input type="file" class="custom-file-input" id="imagen" #imagenInputFile-->
+<!--                                   (change)="onFileSelcted($event)" accept="image/png, image/jpeg, image/gif">-->
+<!--                            <label class="custom-file-label" for="imagen">Select pucture</label>-->
+<!--                        </div>-->
+<!--                        <div *ngIf="fileToUpload" class="mt-5">-->
+<!--                            <h5>Pucture</h5>-->
+<!--                            <div>-->
+<!--                                <img class="image-thumbnail" style="max-width: 300px" [src]="imagenMin">-->
+
+<!--                            </div>-->
+<!--                        </div>-->
+
+<!--                    </form>-->
+<!--                </div>-->
+<!--                <div class="modal-footer">-->
+<!--                    <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>-->
+
+<!--                    <button type="button" name="updateEvent"  class="btn bg-gradient-primary"  (click)=" onSaveFile()">edit</button>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

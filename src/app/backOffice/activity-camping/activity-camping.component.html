@@ -1,0 +1,214 @@
+<div class="container-fluid">
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <h2 class="navbar-brand" href="#">Activity Management</h2>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          
+          <span class="navbar-toggler-icon"></span>
+          
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <a class="btn btn-success"    href="http://localhost:8090/api/v1/api/activitys/exportpdf" >Pdf</a>
+
+          <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addActivity"  type="submit">Add Activity +</button>
+        
+        </div>
+        
+        
+         
+          
+        
+      </div>
+  </nav>
+  <br>
+  <div class="form-floating ">
+  <input class="form-control searchbydate col-6" placeholder="Activity  Date" type="date" [(ngModel)]="startTime" (input)="Search()"  > 
+  <label >search by date</label>
+</div>
+  <br>
+
+  <table   class="table  text-center table-hover ">
+      <thead class="bg-primary text-white">
+        <tr>
+          <th scope="col">Image Activity </th>
+          <th></th>
+          
+          <th scope="col">Activity ID</th>
+          <th scope="col">Name</th>
+          <th scope="col">description</th>
+          <th scope="col">disponibility</th>
+          <th scope="col">capacity</th> 
+          <th scope="col">startTime</th>
+          <th scope="col">endTime</th>
+          <th scope="col">favourite</th>
+          <th></th>
+          <th></th>
+          <th></th>
+         
+        </tr>
+      </thead>
+      <tbody>
+        
+
+        <tr *ngFor="let Activitys of activitydata">
+          <td><img   [src]='"assets/images/"+ Activitys.image?.name'
+            class="img-responsive img-thumbnail" style="width:70px;height:70px">
+          </td>
+            
+            <td>
+              <div class="form-group">
+                <label for="image">Sélectionnez une image à téléverser :</label>
+                <input type="file" id="image" name="image" (change)="onImageSelect($event)">
+                <button type="button" class="btn btn-primary" *ngIf="imageFile" (click)="onImageUpload(Activitys.id)">Téléverser</button>
+              </div>  
+            </td>
+           
+
+          <td>{{Activitys.id}}</td>
+          <td>{{Activitys.name}}</td>
+          <td>{{Activitys.description}}</td>
+          <td>{{Activitys.disponibility}}</td>
+          <td>{{Activitys.capacity}}</td>
+          <td>{{Activitys.startTime}}</td>
+          <td>{{Activitys.endTime}}</td>
+          <td>{{Activitys.favourite}}</td>
+          
+            <td>
+              <button *ngIf="Activitys.activityLikes?.length" mat-icon-button color="warn" aria-label="Example icon button with a heart icon" (click)="addLikeToPost(Activitys.id)">
+              <mat-icon>favorite</mat-icon>
+            </button>
+            <button *ngIf="!Activitys.activityLikes?.length" mat-icon-button color="warn" aria-label="Example icon button with a heart icon" (click)="addLikeToPost(Activitys.id)">
+              <mat-icon style="color: aliceblue;">favorite</mat-icon>
+            </button>
+          
+          </td>
+         
+          <td>
+            
+            
+            <button type="button" class="btn btn-outline-primary me-2" data-bs-toggle="modal" data-bs-target="#editEmployee" (click)="editActivity(Activitys)">Edit</button> 
+            </td><td>
+          <button type="button" class="btn btn-outline-danger" (click)="deleteActivityById(Activitys.id)">Delete</button>
+        </td>
+        </tr>
+        
+      </tbody>
+    </table>
+
+
+
+    <div class="modal fade" id="addActivity" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Add new Activity</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          
+          <div class="modal-body" [formGroup]="ActivDetail">
+            
+                <form [formGroup]="ActivDetail">
+                  <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label">Name </label>
+                      <input type="text" formControlName="name" class="form-control" id="name" aria-describedby="emailHelp">
+                    </div>
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">description </label>
+                    <input type="text" formControlName="description" class="form-control" id="description" aria-describedby="description">
+                  </div>
+                  <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label">capacity </label>
+                      <input type="text" formControlName="capacity" class="form-control" id="capacity" aria-describedby="capacity">
+                    </div>
+                     <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">disponibility </label>
+                  <!-- <input type="text" formControlName="disponibility" class="form-control" id="disponibility" aria-describedby="disponibility"> -->
+                <b></b>
+                <mat-slide-toggle formControlName="disponibility"    id="disponibility" aria-describedby="disponibility"></mat-slide-toggle></div>
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label">startTime </label>
+                      <input type="date" formControlName="startTime" class="form-control" id="startTime" aria-describedby="startTime">
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label">endTime </label>
+                      <input type="date" formControlName="endTime" class="form-control" id="endTime" aria-describedby="endTime">
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label">favourite </label>
+                      <input type="text" formControlName="favourite" class="form-control" id="favourite" aria-describedby="favourite">
+                    </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="addActivity2()">Add Activity</button>
+                    </div>
+                </form>
+  
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  
+    
+    
+    <div class="modal fade" id="editEmployee" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Edit Activity details</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body" [formGroup]="ActivDetail">
+            
+            <form [formGroup]="ActivDetail">
+              <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Name </label>
+                  <input type="text" formControlName="name" class="form-control" id="name" aria-describedby="emailHelp" [(ngModel)]="emp.name">
+                </div>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">description </label>
+                <input type="text" formControlName="description" class="form-control" id="description" [(ngModel)]="emp.description" aria-describedby="description">
+              </div>
+              <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">capacity </label>
+                  <input type="text" formControlName="capacity" class="form-control" id="capacity" [(ngModel)]="emp.capacity" aria-describedby="capacity">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">disponibility </label>
+                  <!-- <input type="text" formControlName="disponibility" class="form-control" id="disponibility" aria-describedby="disponibility"> -->
+                <b></b>
+
+                <mat-slide-toggle formControlName="disponibility"  [(ngModel)]="emp.disponibility"  id="disponibility55555" aria-describedby="disponibility"></mat-slide-toggle></div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">startTime </label>
+                  <input type="datetime-local"  class="form-control" id="startTime222"[(ngModel)]="emp.startTime" aria-describedby="startTime">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">endTime </label>
+                  <input type="datetime-local"  class="form-control" id="endTime5858" [(ngModel)]="emp.endTime" aria-describedby="endTime">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">favourite </label>
+                  <input type="text" formControlName="favourite" class="form-control" id="favourite" [(ngModel)]="emp.favourite" aria-describedby="favourite">
+                </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-outline-success" (click)="updateActivityy()" data-bs-dismiss="modal">Update </button>
+                    </div>
+                </form>
+  
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  
+  </div>  
+
+  
+
+  
+  
+
+  

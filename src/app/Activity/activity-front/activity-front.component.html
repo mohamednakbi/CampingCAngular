@@ -1,0 +1,90 @@
+<!-- <div class="activity">
+    <img src="image.jpg" alt="Nom de l'activité">
+    <div class="info">
+      <h2>Nom de l'activité</h2>
+      <p>Description de l'activité</p>
+      <button class="like">Like</button>
+      <div class="rating">
+        <mat-radio-group aria-label="Select an option">
+            <mat-radio-button value="1">Mauvaise </mat-radio-button>
+            <mat-radio-button value="2">Moyenne </mat-radio-button>
+            <mat-radio-button value="2">Bonne </mat-radio-button>
+        
+          </mat-radio-group>
+        
+      </div>
+    </div>
+  </div> -->
+  <!DOCTYPE html>
+  <html lang="en">
+	  <head>
+		  <meta charset="UTF-8" />
+		  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		  <!-- font awesome Link  -->
+		  <link
+			  rel="stylesheet"
+			  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+			  integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+			  crossorigin="anonymous"
+			  referrerpolicy="no-referrer" />
+		  <!-- swiper css link -->
+		  <link
+			  rel="stylesheet"
+			  href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+		  <!-- css file link  -->
+		  
+		  <title>courses</title>
+	  </head>
+	  <body>
+	
+  
+		  <section class="heading-link">
+			  <h3>Activitys</h3>
+			  <p><a href="home.html">Download PDF Here</a> / </p>
+		  </section>
+  
+	  <!-- courses start -->
+	  <section class="courses">
+		<h1 class="heading">our Activitys</h1>
+  
+		<div class="box-container" >
+		  <div class="box" *ngFor="let act of activitydata">
+			<div class="image">
+			  <img [src]='"assets/images/"+ act.image?.name' alt="">
+			  <h3>{{act.name}}</h3>
+			</div>
+			<div class="content">
+			  <h3>{{act.name}}</h3>
+			  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+			  <button *ngIf="act.activityLikes?.length" mat-icon-button color="warn" aria-label="Example icon button with a heart icon" (click)="addLikeToPost(act.id)">
+				<mat-icon>favorite</mat-icon>
+			  </button>
+			  <button *ngIf="!act.activityLikes?.length" mat-icon-button color="warn" aria-label="Example icon button with a heart icon" (click)="addLikeToPost(act.id)">
+				<mat-icon style="color: aliceblue;">favorite</mat-icon>
+			  </button>		  <div>
+			  <mat-radio-group aria-label="Select an option">
+				<mat-radio-button  value="3" (click)="addEvaluation(act.id,'AVERAGE')"  >AVERAGE </mat-radio-button>
+				<mat-radio-button value="1" (click)="addEvaluation(act.id,'Good')" >good </mat-radio-button>
+				<mat-radio-button value="2" (click)="addEvaluation(act.id,'Bad')">bad </mat-radio-button>
+			
+			  </mat-radio-group>
+			</div>
+			</div>
+		  </div>
+	
+		</div>
+	  </section>
+	  <!-- courses end -->
+  
+		 
+  
+		  <!-- footer end  -->
+  
+		  <!-- swiper js link  -->
+		  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+  
+		  <!-- js file link  -->
+		  <script src="js/script.js"></script>
+	  </body>
+  </html>
