@@ -36,13 +36,11 @@ import { MatSelectModule } from '@angular/material/select'
 import { PopupComponent } from './Activity/popup/popup.component';
 import { MaterialModule } from 'src/MaterialModule';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle'
-
-import { MatDatepickerModule } from '@angular/material/datepicker';
+ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 
 import { FormsModule } from '@angular/forms';
 import { FormGroup, FormControl, Validators, FormBuilder, ReactiveFormsModule } from '@angular/forms';
-
 
 
 @NgModule({
@@ -87,7 +85,8 @@ import { FormGroup, FormControl, Validators, FormBuilder, ReactiveFormsModule } 
     MatDatepickerModule,
     MatNativeDateModule,
     FormsModule,
-    MatSlideToggleModule
+    MatSlideToggleModule, 
+    
 
 
 

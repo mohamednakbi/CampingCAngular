@@ -8,14 +8,17 @@ import {RequestBaseService} from "../../Servicee/request-base.service";
 import { ActivityLiked } from 'src/app/Models/post-like';
 import { Post } from 'src/app/Models/post';
 import { ActivityModel, Evaluation } from 'src/app/Models/activity';
+import { PopupComponent } from '../popup/popup.component';
+import { MatDialog } from '@angular/material/dialog';
+import { DetailActivityComponent } from '../detail-activity/detail-activity.component';
 @Component({
   selector: 'app-activity-front',
   templateUrl: './activity-front.component.html',
   styleUrls: ['./activity-front.component.css']
 })
 export class ActivityFrontComponent implements OnInit {
-
-  constructor(private activatedRoute: ActivatedRoute, 
+  isRequired=false;
+   constructor(public dialog: MatDialog,private activatedRoute: ActivatedRoute, 
     private service: ActivityService,
     private router: Router,
     http: HttpClient) { }
@@ -53,7 +56,36 @@ export class ActivityFrontComponent implements OnInit {
   }
 
   
-  // addDisLikePost(id: string) {
+ 
+
+
+  eval : Evaluation = new Evaluation();
+addEvaluation(id:any , val : string){
+  this.isRequired=!this.isRequired ;
+  this.service.addeval(id ,val ).subscribe()
+  this.getAllActivity();
+
+}
+
+Openpopup() {
+    
+   
+ this.router.navigate(['Graph'])
+ 
+ }
+//  OpenpopupDEtail(id:any) {
+    
+//   this.dialog.open(DetailActivityComponent,{
+//     width:'500px',
+//   // exitAnimationDuration: '1000ms',
+//     // enterAnimationDuration: '1000ms',
+//  data: {id: id}
+
+//  })
+ 
+//  }
+
+ // addDisLikePost(id: string) {
   //   this.service.addPostDisLike(id, this.postLike).subscribe(p => {
   //     console.log(this.postLike);
   //     let currentUrl = this.router.url;
@@ -63,12 +95,4 @@ export class ActivityFrontComponent implements OnInit {
   //   });
   // }
 
-
-  eval : Evaluation = new Evaluation();
-addEvaluation(id:any , val : string){
-
-  this.service.addeval(id ,val ).subscribe()
-  this.getAllActivity();
-
-}
 }

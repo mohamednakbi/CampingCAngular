@@ -17,6 +17,7 @@ export class ActivityModel {
     files?: ActivityFile[];
     activityLikes?: ActivityLiked[]
     image? : Image;
+    activityEvalu!:Evaluation[];
 }
 
 

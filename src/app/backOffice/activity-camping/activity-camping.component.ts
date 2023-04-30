@@ -102,30 +102,13 @@ editActivity(a : ActivityModel) {
 
 }
 
-// updateActivityy() {
 
-//   this.Activityobj.id = this.ActivDetail.value.id;
-//   this.Activityobj.name = this.ActivDetail.value.name;
-//   this.Activityobj.description = this.ActivDetail.value.description;
-//   this.Activityobj.capacity = this.ActivDetail.value.capacity;
-//   this.Activityobj.disponibility = this.ActivDetail.value.disponibility;
-//   this.Activityobj.startTime = this.ActivDetail.value.startTime;
-//   this.Activityobj.endTime = this.ActivDetail.value.endTime;
-//   this.Activityobj.favourite = this.ActivDetail.value.favourite;
-
-
-//   this.api.updateActivity(this.Activityobj).subscribe(res=>{
-//     console.log(res);
-//     this.getAllActivity();
-//   },err=>{
-//     console.log(err);
-//   })
-
-// }
 
 
 updateActivityy() {
-  this.api.updateActivity(this.emp).subscribe(res => this.router.navigate(['Activity']));
+  this.api.updateActivity(this.emp).subscribe(res =>window.location.reload()
+    //this.route.navigate(['Activity'])
+  );
 }
  
 
@@ -170,50 +153,6 @@ Search(){
 
 
 
-
-
-
-
-
-
-
-
-
-onCllick() {  
-  const fileUpload = this.fileUpload.nativeElement;fileUpload.onchange = () => {  
-  for (let index = 0; index < fileUpload.files.length; index++)  
-  {  
-   const file = fileUpload.files[index];  
-    this.fileName = file.name +" is uploaded"
-   
-  }  
-    this.uploadFiles();  
-  };  
-  fileUpload.click();  
-}
-private uploadFiles() {  
-this.fileUpload.nativeElement.value = '';  
-this.files.forEach(file => {  
-  this.uploadFile(file);  
-});  
-}
-uploadFile(file: any) {  
-const formData = new FormData();  
-formData.append('file', file.data);  
-file.inProgress = true;  
-this.api.upload(formData).subscribe(
-  rsp => {
-    console.log(rsp.type)
-
-
-   
-},
-  error => {
-    console.log(error)
-  });
-
-}
-
 like : ActivityLiked = new ActivityLiked();
 addLikeToPost(id:any){
   this.like.isLiked = "true"
@@ -223,11 +162,14 @@ addLikeToPost(id:any){
 
 }
 
+
+
+/***loula */
 imageFile!: File;
 onImageSelect(event: any) {
   this.imageFile = event.target.files[0];
 }
-
+/**thenia***/
 onImageUpload(id: any) {
   if (!this.imageFile) {
     console.error('Aucune image sélectionnée');
@@ -238,4 +180,74 @@ onImageUpload(id: any) {
   window.location.reload()
 
 }
+
+
+
+
+
+
+
+
+
+// onCllick() {  
+//   const fileUpload = this.fileUpload.nativeElement;fileUpload.onchange = () => {  
+//   for (let index = 0; index < fileUpload.files.length; index++)  
+//   {  
+//    const file = fileUpload.files[index];  
+//     this.fileName = file.name +" is uploaded"
+   
+//   }  
+//     this.uploadFiles();  
+//   };  
+//   fileUpload.click();  
+// }
+// private uploadFiles() {  
+// this.fileUpload.nativeElement.value = '';  
+// this.files.forEach(file => {  
+//   this.uploadFile(file);  
+// });  
+// }
+// uploadFile(file: any) {  
+// const formData = new FormData();  
+// formData.append('file', file.data);  
+// file.inProgress = true;  
+// this.api.upload(formData).subscribe(
+//   rsp => {
+//     console.log(rsp.type)
+
+
+   
+// },
+//   error => {
+//     console.log(error)
+//   });
+
+// }
+
+
+// updateActivityy() {
+
+//   this.Activityobj.id = this.ActivDetail.value.id;
+//   this.Activityobj.name = this.ActivDetail.value.name;
+//   this.Activityobj.description = this.ActivDetail.value.description;
+//   this.Activityobj.capacity = this.ActivDetail.value.capacity;
+//   this.Activityobj.disponibility = this.ActivDetail.value.disponibility;
+//   this.Activityobj.startTime = this.ActivDetail.value.startTime;
+//   this.Activityobj.endTime = this.ActivDetail.value.endTime;
+//   this.Activityobj.favourite = this.ActivDetail.value.favourite;
+
+
+//   this.api.updateActivity(this.Activityobj).subscribe(res=>{
+//     console.log(res);
+//     this.getAllActivity();
+//   },err=>{
+//     console.log(err);
+//   })
+
+// }
+
+
+
+
+
 }

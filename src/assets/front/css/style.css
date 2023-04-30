@@ -478,7 +478,7 @@ h6 {
 #hero {
   width: 100%;
   height: 100vh;
-  background: url(../img/hero-bg.jpg) top center;
+  background: url(../img/gettyim.jpg) top center;
   background-size: cover;
   overflow: hidden;
   position: relative;
@@ -615,7 +615,7 @@ h6 {
   border-radius: 0;
 }
 
-#hero .about-btn {
+#hero .Activity-btn {
   font-family: "Raleway", sans-serif;
   font-weight: 500;
   font-size: 14px;
@@ -631,7 +631,7 @@ h6 {
   border: 2px solid #f82249;
 }
 
-#hero .about-btn:hover {
+#hero .Activity-btn:hover {
   background: #f82249;
   color: #fff;
 }
@@ -651,7 +651,7 @@ h6 {
 /*--------------------------------------------------------------
 # About Section
 --------------------------------------------------------------*/
-#about {
+#Activity {
   background: url("../img/about-bg.jpg");
   background-size: cover;
   overflow: hidden;
@@ -666,7 +666,7 @@ h6 {
   }
 }
 
-#about:before {
+#Activity:before {
   content: "";
   background: rgba(13, 20, 41, 0.8);
   position: absolute;
@@ -676,14 +676,14 @@ h6 {
   right: 0;
 }
 
-#about h2 {
+#Activity h2 {
   font-size: 36px;
   font-weight: bold;
   margin-bottom: 10px;
   color: #fff;
 }
 
-#about h3 {
+#Activity h3 {
   font-size: 18px;
   font-weight: bold;
   text-transform: uppercase;
@@ -691,7 +691,7 @@ h6 {
   color: #fff;
 }
 
-#about p {
+#Activity p {
   font-size: 14px;
   margin-bottom: 20px;
   color: #fff;
@@ -1673,7 +1673,7 @@ h6 {
 
 
 
-
+/* 
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&display=swap');
 
@@ -1690,13 +1690,11 @@ h6 {
 	text-transform: capitalize;
 }
 :root {
-	--pink: #ff6a6d;
 	--light-pink: #fff7f7;
 	--white: #fff;
 	--light-color: #777;
 	--black: #444;
 	--box-shadow: 0 0.6rem 0.9rem rgba(0, 0, 0, 0.2);
-	--border: 0.1rem solid #ff6a6d;
 }
 .heading-link {
 	text-align: center;
@@ -1749,4 +1747,4 @@ section {
 	color: var(--black);
 }
 
- 
+  */

@@ -1,32 +1,47 @@
+
+
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<!-- font awesome Link  -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+		integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<!-- swiper css link -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+	<!-- css file link  -->
+
+	
+
 <!-- ======= Hero Section ======= -->
 <section id="hero">
     <div class="hero-container" data-aos="zoom-in" data-aos-delay="100">
       <h1 class="mb-4 pb-0">The Annual<br><span>Marketing</span> Conference</h1>
       <p class="mb-4 pb-0">10-12 December, Downtown Conference Center, New York</p>
       <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="glightbox play-btn mb-4"></a>
-      <a href="#about" class="about-btn scrollto">About The Event</a>
+      <a href="#Activity" class="about-btn scrollto">About The Event</a>
     </div>
   </section>
 
   <main id="main">
 
     <!-- ======= About Section ======= -->
-    <section id="about">
+    <section id="Activity">
       <div class="container" data-aos="fade-up">
         <div class="row">
           <div class="col-lg-6">
-            <h2>About The Event</h2>
+            <h2>About Camping centre Activity</h2>
             <p>Sed nam ut dolor qui repellendus iusto odit. Possimus inventore eveniet accusamus error amet eius aut
               accusantium et. Non odit consequatur repudiandae sequi ea odio molestiae. Enim possimus sunt inventore in
               est ut optio sequi unde.</p>
           </div>
           <div class="col-lg-3">
             <h3>Where</h3>
-            <p>Downtown Conference Center, New York</p>
+            <p>TUNISIA</p>
           </div>
           <div class="col-lg-3">
             <h3>When</h3>
-            <p>Monday to Wednesday<br>10-12 December</p>
+            <p>Monday to Wednesday </p>
           </div>
         </div>
       </div>
@@ -34,104 +49,91 @@
 
     <!-- ======= Speakers Section ======= -->
         <div class="section-header">
-          <h2>Event Speakers</h2>
-          <p>Here are some of our speakers</p>
+          <br><br>
+          <h2>ACTIVITYS</h2>
+          <p>Here are some of our Activity</p>
+          <p><a href="http://localhost:8090/api/v1/exportpdf">Download PDF Here</a> / </p>
+		<p><button class="btn btn-link" (click)="Openpopup()" >Most Evaluation Activity</button>  </p>
         </div>
+        <div class="row" >
+          <div class="col-lg-4 col-md-6" *ngFor="let act of activitydata">
+            <div class="box" data-aos="fade-up" data-aos-delay="300">
+              <img [src]='"assets/images/"+ act.image?.name' alt="Speaker 3" class="img-fluid">
+              <div class="details">
+                <!-- <h3><a href="speaker-details.html">Cole Emmerich</a></h3>
+                <p>Fugiat l<p>{{}}</p>aborum et</p> -->
+                <div class="content">
+                  <h3>{{act.name}}</h3> 
+                  <p>{{act.description}}</p>
+                  <p>{{act.startTime}}</p>
+                  <p>{{act.endTime}}</p>
+                  <p>{{act.capacity}}</p>
+                  <p>{{act.disponibility}}</p>
 
-        <div class="row">
-          <div class="col-lg-4 col-md-6">
-            <div class="speaker" data-aos="fade-up" data-aos-delay="100">
-              <img src="/assets/front/img/speakers/1.jpg" alt="Speaker 1" class="img-fluid">
-              <div class="details">
-                <h3><a href="speaker-details.html">Brenden Legros</a></h3>
-                <p>Quas alias incidunt</p>
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
+                  <div class="lwost">
+                   
+                    <button *ngIf="act.activityLikes?.length" mat-icon-button color="warn"
+                    aria-label="Example icon button with a heart icon" (click)="addLikeToPost(act.id)">
+                    <mat-icon>favorite</mat-icon>
+                  </button>
+                  <button *ngIf="!act.activityLikes?.length" mat-icon-button color="warn"
+                    aria-label="Example icon button with a heart icon" (click)="addLikeToPost(act.id)">
+                    <mat-icon style="color: aliceblue;">favorite</mat-icon>
+                  </button>
+                  
+                  </div>
+                  <br><br>
+                <div class="lwost">
+                   
+
+                    <mat-radio-group aria-label="Select an option" *ngIf="act.activityEvalu.length == 0" >
+                      <mat-radio-button value="1"  (click)="addEvaluation(act.id,'AVERAGE')">AVERAGE</mat-radio-button>
+                      <mat-radio-button value="2" (click)="addEvaluation(act.id,'Good')">good</mat-radio-button>
+                      <mat-radio-button value="3" (click)="addEvaluation(act.id,'Bad')">bad</mat-radio-button>
+                    </mat-radio-group>
+        
+                    <mat-radio-group aria-label="Select an option" *ngIf="act.activityEvalu.length &&act.activityEvalu[0].noteValue == 'AVERAGE'" >
+                      <mat-radio-button value="1" checked="true" (click)="addEvaluation(act.id,'AVERAGE')">AVERAGE</mat-radio-button>
+                      <mat-radio-button value="2" (click)="addEvaluation(act.id,'Good')">good</mat-radio-button>
+                      <mat-radio-button value="3" (click)="addEvaluation(act.id,'Bad')">bad</mat-radio-button>
+                    </mat-radio-group>
+                    <mat-radio-group aria-label="Select an option" *ngIf="act.activityEvalu.length && act.activityEvalu[0].noteValue == 'Good'" >
+                      <mat-radio-button value="1"  (click)="addEvaluation(act.id,'AVERAGE')">AVERAGE</mat-radio-button>
+                      <mat-radio-button value="2"checked="true" (click)="addEvaluation(act.id,'Good')">good</mat-radio-button>
+                      <mat-radio-button value="3" (click)="addEvaluation(act.id,'Bad')">bad</mat-radio-button>
+                    </mat-radio-group>
+                    <mat-radio-group aria-label="Select an option" *ngIf="act.activityEvalu.length && act.activityEvalu[0].noteValue == 'Bad'" >
+                      <mat-radio-button value="1" (click)="addEvaluation(act.id,'AVERAGE')">AVERAGE</mat-radio-button>
+                      <mat-radio-button value="2" (click)="addEvaluation(act.id,'Good')">good</mat-radio-button>
+                      <mat-radio-button value="3"  checked="true"(click)="addEvaluation(act.id,'Bad')">bad</mat-radio-button>
+                    </mat-radio-group>
+        
+        
+                  </div>
+                
+      
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="speaker" data-aos="fade-up" data-aos-delay="200">
-              <img src="/assets/front/img/speakers/2.jpg" alt="Speaker 2" class="img-fluid">
-              <div class="details">
-                <h3><a href="speaker-details.html">Hubert Hirthe</a></h3>
-                <p>Consequuntur odio aut</p>
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-            </div>
           </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="speaker" data-aos="fade-up" data-aos-delay="300">
-              <img src="/assets/front/img/speakers/3.jpg" alt="Speaker 3" class="img-fluid">
-              <div class="details">
-                <h3><a href="speaker-details.html">Cole Emmerich</a></h3>
-                <p>Fugiat laborum et</p>
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="speaker" data-aos="fade-up" data-aos-delay="100">
-              <img src="/assets/front/img/speakers/4.jpg" alt="Speaker 4" class="img-fluid">
-              <div class="details">
-                <h3><a href="speaker-details.html">Jack Christiansen</a></h3>
-                <p>Debitis iure vero</p>
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="speaker" data-aos="fade-up" data-aos-delay="200">
-              <img src="/assets/front/img/speakers/5.jpg" alt="Speaker 5" class="img-fluid">
-              <div class="details">
-                <h3><a href="speaker-details.html">Alejandrin Littel</a></h3>
-                <p>Qui molestiae natus</p>
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="speaker" data-aos="fade-up" data-aos-delay="300">
-              <img src="/assets/front/img/speakers/6.jpg" alt="Speaker 6" class="img-fluid">
-              <div class="details">
-                <h3><a href="speaker-details.html">Willow Trantow</a></h3>
-                <p>Non autem dicta</p>
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
+          <br>
+          <br>
+       
+   
+       
   
-    </div>
+   
+   
 
+
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+    <!-- js file link  -->
+    <script src="js/script.js"></script>
+
+    
      <!-- ======= Schedule Section ======= -->
      <div id="schedule" class="section-with-bg">
         <div class="container" data-aos="fade-up">

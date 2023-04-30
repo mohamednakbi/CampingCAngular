@@ -9,6 +9,7 @@ import { AddActivityComponent } from './Activity/add-activity/add-activity.compo
 import { ActivityComponent } from './Activity/activity/activity.component';
 import { DetailActivityComponent } from './Activity/detail-activity/detail-activity.component';
 import { ActivityFrontComponent } from './Activity/activity-front/activity-front.component';
+import { PopupComponent } from './Activity/popup/popup.component';
 
 const routes: Routes =  [
   {
@@ -41,6 +42,8 @@ const routes: Routes =  [
 
 {path: 'detailActivity', component: DetailActivityComponent},
 {path: 'ActivityUser', component: ActivityFrontComponent},
+{path: 'Graph', component: PopupComponent},
+
 
 ];
 
